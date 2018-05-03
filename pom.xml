@@ -23,6 +23,17 @@
                     </execution>
                 </executions>
             </plugin>
+            <!--<plugin>-->
+                <!--<groupId>org.apache.maven.plugins</groupId>-->
+                <!--<artifactId>maven-war-plugin</artifactId>-->
+                <!--<configuration>-->
+                    <!--<archive>-->
+                        <!--<manifestEntries>-->
+                            <!--<Dependencies>org.slf4j</Dependencies>-->
+                        <!--</manifestEntries>-->
+                    <!--</archive>-->
+                <!--</configuration>-->
+            <!--</plugin>-->
         </plugins>
     </build>
     <properties>
@@ -33,14 +44,20 @@
         <version.wildfly-swarm>2018.3.3</version.wildfly-swarm>
     </properties>
     <dependencies>
-        <dependency>
-            <groupId>javax</groupId>
-            <artifactId>javaee-api</artifactId>
-            <scope>provided</scope>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>javax</groupId>-->
+            <!--<artifactId>javaee-api</artifactId>-->
+            <!--<scope>provided</scope>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>org.wildfly.swarm</groupId>
             <artifactId>jaxrs</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.spec</groupId>
+            <artifactId>jboss-javaee-all-7.0</artifactId>
+            <version>1.0.1.Final</version>
+            <scope>provided</scope>
         </dependency>
 
         <!--<dependency>-->
@@ -80,6 +97,14 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <dependency>
+                <groupId>org.wildfly.bom</groupId>
+                <artifactId>jboss-javaee-7.0-with-all</artifactId>
+                <version>8.2.0.Final</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
         </dependencies>
     </dependencyManagement>
+
 </project>

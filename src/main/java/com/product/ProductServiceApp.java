@@ -16,32 +16,32 @@ import javax.ws.rs.core.UriInfo;
  * JAX-RS application. Root path is /webshop
  *
  */
-//@ApplicationPath("/webshop")
+@ApplicationPath("/webshop")
 @Path("")
 
 public class ProductServiceApp extends Application
 {
-    @GET
-    @Produces("text/plain")
-    public Response doGet() {
-        return Response.ok("method doGet invoked " + new Date()).build();
-    }
-
 //    @GET
-//    @Produces(MediaType.APPLICATION_JSON)
-//    public Response getDirectory(@Context UriInfo uri) {
-//        Link selfLink = Link.fromUri(uri.getBaseUri())
-//                .rel("self").type(MediaType.APPLICATION_JSON)
-//                .build();
-//        Link productsLink = Link.fromUri(uri.getBaseUri() + "products")
-//                .rel("products").type(MediaType.APPLICATION_JSON)
-//                .build();
-//
-//        return Response.ok()
-//                .lastModified(new Date())
-//                .location(uri.getRequestUri())
-//                .links(selfLink, productsLink)
-//                .build();
+//    @Produces("text/plain")
+//    public Response doGet() {
+//        return Response.ok("method doGet invoked " + new Date()).build();
 //    }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getDirectory(@Context UriInfo uri) {
+        Link selfLink = Link.fromUri(uri.getBaseUri())
+                .rel("self").type(MediaType.APPLICATION_JSON)
+                .build();
+        Link productsLink = Link.fromUri(uri.getBaseUri() + "products")
+                .rel("products").type(MediaType.APPLICATION_JSON)
+                .build();
+
+        return Response.ok()
+                .lastModified(new Date())
+                .location(uri.getRequestUri())
+                .links(selfLink, productsLink)
+                .build();
+    }
     
 }

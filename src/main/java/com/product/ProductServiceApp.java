@@ -26,7 +26,7 @@ public class ProductServiceApp extends Application
     public Response doGet() {
         return Response.ok("method doGet invoked " + new Date()).build();
     }
-    
+
 //    @GET
 //    @Produces(MediaType.APPLICATION_JSON)
 //    public Response getDirectory(@Context UriInfo uri) {
